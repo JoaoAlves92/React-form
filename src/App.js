@@ -1,25 +1,25 @@
-import logo from './logo.svg';
+import { Container } from '@material-ui/core';
 import './App.css';
+import Formulario from './componentes/Formulario/Formulario';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container className="App" maxWidth="sm">
+      <Formulario validaCPF={validaCPF} Enviar={Enviar}/>
+    </Container>
   );
+}
+
+function Enviar(dados){
+  console.log(dados);
+}
+
+function validaCPF(cpf){
+  if (cpf.length !== 11){
+    return {valido: true, text:"CPF precisa ter 11 números"};
+  } else {
+    return {valido: false, text:""};
+  }
 }
 
 export default App;
